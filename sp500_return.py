@@ -12918,7 +12918,6 @@ for entry in data:
 
 
 if __name__ == '__main__':
-
     n_periods = 10
     min_months_spacing = 12 * 5
     running_heap = []
@@ -12945,7 +12944,6 @@ if __name__ == '__main__':
                 else:
                     heapq.heappushpop(running_heap, (-annualized_return, date_range))
 
-    # Convert the heap to a sorted list of positive annualized returns
     least_returns = sorted([(-annualized_return, date_range) for annualized_return, date_range in running_heap])
 
     for annualized_return, period in least_returns:
