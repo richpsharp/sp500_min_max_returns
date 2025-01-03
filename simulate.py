@@ -7,6 +7,7 @@ import pandas as pd
 def calculate_signed_momentum(df, window=10):
     df = df.sort_values(by='Date')
     df['Price_ROC'] = df['Close'].diff(window - 1) / df['Close'].shift(window - 1)
+    df['Price_ROC'] = df['Close'].rolling(window=window) diff(window - 1) / df['Close'].shift(window - 1)
     df['Volume_MA'] = df['Volume'].rolling(window=window).mean()
     df['Momentum'] = df['Price_ROC'] * df['Volume_MA']
     df.drop(['Price_ROC', 'Volume_MA'], axis=1, inplace=True)
